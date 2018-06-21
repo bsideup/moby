@@ -257,3 +257,7 @@ func ensureReaderClosed(response serverResponse) {
 		response.body.Close()
 	}
 }
+
+func (cli *Client) SendRequest(ctx context.Context, method, path string, query url.Values, body io.Reader, headers headers) (serverResponse, error) {
+	return cli.sendRequest(ctx, method, path, query, body, headers);
+}
